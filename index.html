@@ -5,33 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Guide CNFans - Étape par étape</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: #f7f7fa;
+        html, body {
+            height: 100%;
             margin: 0;
             padding: 0;
-            color: #000; /* texte noir */
+            background: #f7f7fa;
+            color: #000;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
         .container {
             max-width: 650px;
-            margin: 40px auto 60px;
+            width: 90vw;
             background: #fff;
             border-radius: 12px;
             box-shadow: 0 2px 12px rgba(0,0,0,0.07);
             padding: 32px 24px;
+            box-sizing: border-box;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
         }
-        /* Logo en haut à la place du titre */
         .logo-header {
             display: flex;
             justify-content: center;
             margin-bottom: 16px;
         }
         .logo-header img {
-            width: 160px; /* logo plus grand */
+            width: 160px;
             height: auto;
         }
 
-        /* Barre de progression */
         .progress-bar {
             position: fixed;
             top: 0; left: 0; right: 0;
@@ -41,7 +52,7 @@
         }
         .progress {
             height: 6px;
-            background: #b00000; /* rouge */
+            background: #b00000;
             width: 0%;
             transition: width 0.3s ease;
         }
@@ -55,7 +66,7 @@
         }
         .step-number {
             display: inline-block;
-            background: #b00000; /* rouge */
+            background: #b00000;
             color: #fff;
             border-radius: 50%;
             width: 36px;
@@ -65,15 +76,18 @@
             font-weight: bold;
             margin-right: 12px;
             font-size: 1.3em;
+            vertical-align: middle;
         }
         .step-title {
             font-size: 1.25em;
             font-weight: 700;
             color: #b00000;
             margin-bottom: 8px;
+            display: inline-block;
+            vertical-align: middle;
         }
         .step-content {
-            margin-left: 52px;
+            margin-left: 48px;
             font-size: 1.15em;
         }
         a {
@@ -108,14 +122,62 @@
             cursor: pointer;
             transition: background 0.2s;
             box-shadow: 0 4px 8px rgba(176,0,0,0.4);
+            position: absolute;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            min-width: 180px;
         }
         .next-btn:hover {
             background: #850000;
         }
+
+        .choice-buttons {
+            display: flex;
+            flex-direction: row;
+            gap: 12px;
+            margin-top: 16px;
+            margin-left: 48px;
+            flex-wrap: wrap;
+        }
+        .choice-button {
+            background: #b00000;
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1em;
+            cursor: pointer;
+            text-decoration: none;
+            user-select: none;
+            flex: 1;
+            min-width: 140px;
+            transition: background 0.3s;
+        }
+        .choice-button:hover {
+            background: #850000;
+        }
+
         @media (max-width: 700px) {
-            .container { padding: 18px 4vw; }
-            .step-content { margin-left: 40px; font-size: 1.2em; }
-            .step-number { width: 40px; height: 40px; line-height: 40px; font-size: 1.5em;}
+            .container {
+                width: 95vw;
+                padding: 24px 12px;
+                min-height: 75vh;
+            }
+            .step-content {
+                margin-left: 36px;
+                font-size: 1.25em;
+            }
+            .step-number {
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+                font-size: 1.5em;
+            }
+            .choice-buttons {
+                margin-left: 36px;
+            }
         }
     </style>
 </head>
@@ -123,17 +185,15 @@
     <div class="progress-bar"><div class="progress" id="progress"></div></div>
 
     <div class="container">
-
         <div class="logo-header">
-    <img src="https://i.postimg.cc/R0s41NsS/0x0.png" alt="Logo CNFans" style="width:160px; height:auto;" />
-</div>
-
+            <img src="https://i.postimg.cc/R0s41NsS/0x0.png" alt="Logo CNFans" />
+        </div>
 
         <div class="step active" data-step="1">
             <span class="step-number">1</span>
             <span class="step-title">Installer l'application CNFans</span>
             <div class="step-content">
-                Cliquez sur ce lien d'affiliation pour télécharger et installer l'application :<br>
+                Cliquez sur ce lien pour télécharger et installer l'application :<br>
                 <a href="https://cnfans.com/register?ref=3238546" target="_blank" rel="noopener noreferrer">https://cnfans.com/register?ref=3238546</a>
             </div>
         </div>
@@ -142,28 +202,29 @@
             <span class="step-number">2</span>
             <span class="step-title">Créer un compte</span>
             <div class="step-content">
-                Suivez les instructions sur le site pour créer votre compte CNFans.<br>
-                <em>Astuce : Utilisez une adresse e-mail valide pour recevoir les notifications.</em>
+                Suivez les instructions sur le site pour créer votre compte CNFans.
             </div>
         </div>
 
         <div class="step" data-step="3">
             <span class="step-number">3</span>
-            <span class="step-title">Consulter et choisir vos articles</span>
+            <span class="step-title">Chercher des articles</span>
             <div class="step-content">
-                Parcourez le canal Telegram ou le tableur pour trouver les articles qui vous intéressent.<br>
-                <ul>
-                    <li>Utilisez la fonction de recherche pour gagner du temps.</li>
-                    <li>Notez les références ou liens importants.</li>
-                </ul>
+                Choisissez une des options suivantes :
+                <div class="choice-buttons">
+                    <a href="https://t.me/+example_channel" target="_blank" rel="noopener noreferrer" class="choice-button">Canal Telegram</a>
+                    <a href="https://docs.google.com/spreadsheets/d/example" target="_blank" rel="noopener noreferrer" class="choice-button">Site web</a>
+                </div>
             </div>
         </div>
 
         <div class="step" data-step="4">
             <span class="step-number">4</span>
-            <span class="step-title">Commander ou enregistrer vos articles</span>
+            <span class="step-title">Règlement de la commande</span>
             <div class="step-content">
-                Une fois votre sélection faite, suivez les instructions de CNFans pour commander ou enregistrer vos articles favoris.
+                Le règlement se fait en deux étapes :<br><br>
+                <strong>1ère étape :</strong> vous payez les frais pour envoyer l'article du vendeur vers l'entrepôt CNFans.<br><br>
+                <strong>2ème étape :</strong> une fois que l'article arrive à l'entrepôt, vous payez les frais pour la livraison jusqu'à chez vous.
             </div>
         </div>
 
@@ -171,13 +232,13 @@
             <span class="step-number">✔</span>
             <span class="step-title">Félicitations !</span>
             <div class="step-content">
-                Vous avez terminé le guide. <br>
+                Vous avez terminé le guide.
                 <div class="tips">
                     <strong>Conseils :</strong>
                     <ul>
-                        <li>Pensez à sauvegarder vos identifiants CNFans.</li>
-                        <li>Consultez régulièrement le canal ou le tableur pour découvrir de nouveaux articles.</li>
-                        <li>Si vous avez des questions, contactez-moi directement !</li>
+                        <li>Sauvegardez vos identifiants CNFans.</li>
+                        <li>Consultez régulièrement les articles mis à jour.</li>
+                        <li>Si besoin, contactez-moi directement !</li>
                     </ul>
                 </div>
             </div>
