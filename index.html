@@ -1,282 +1,239 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Guide CNFans - Étape par étape</title>
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            background: #f7f7fa;
-            color: #000;
-            font-family: 'Segoe UI', Arial, sans-serif;
-        }
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .container {
-            max-width: 650px;
-            width: 90vw;
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-            padding: 32px 24px;
-            box-sizing: border-box;
-            min-height: 70vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
-        }
-        .logo-header {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 16px;
-        }
-        .logo-header img {
-            width: 160px;
-            height: auto;
-        }
-
-        .progress-bar {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            height: 6px;
-            background: #eee;
-            z-index: 1000;
-        }
-        .progress {
-            height: 6px;
-            background: #b00000;
-            width: 0%;
-            transition: width 0.3s ease;
-        }
-
-        .step {
-            display: none;
-            margin-bottom: 32px;
-        }
-        .step.active {
-            display: block;
-        }
-        .step-number {
-            display: inline-block;
-            background: #b00000;
-            color: #fff;
-            border-radius: 50%;
-            width: 36px;
-            height: 36px;
-            text-align: center;
-            line-height: 36px;
-            font-weight: bold;
-            margin-right: 12px;
-            font-size: 1.3em;
-            vertical-align: middle;
-        }
-        .step-title {
-            font-size: 1.25em;
-            font-weight: 700;
-            color: #b00000;
-            margin-bottom: 8px;
-            display: inline-block;
-            vertical-align: middle;
-        }
-        .step-content {
-            margin-left: 48px;
-            font-size: 1.15em;
-        }
-        a {
-            color: #b00000;
-            text-decoration: none;
-            font-weight: 600;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        .tips {
-            background: #fee6e6;
-            border-left: 4px solid #b00000;
-            padding: 12px 18px;
-            margin: 24px 0 0 0;
-            border-radius: 6px;
-            color: #6b0000;
-        }
-        ul {
-            margin: 8px 0 0 18px;
-        }
-        .next-btn {
-            display: block;
-            margin: 24px auto 0 auto;
-            background: #b00000;
-            color: #fff;
-            border: none;
-            border-radius: 6px;
-            padding: 14px 34px;
-            font-size: 1.15em;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background 0.2s;
-            box-shadow: 0 4px 8px rgba(176,0,0,0.4);
-            position: absolute;
-            bottom: 24px;
-            left: 50%;
-            transform: translateX(-50%);
-            min-width: 180px;
-        }
-        .next-btn:hover {
-            background: #850000;
-        }
-
-        .choice-buttons {
-            display: flex;
-            flex-direction: row;
-            gap: 12px;
-            margin-top: 16px;
-            margin-left: 48px;
-            flex-wrap: wrap;
-        }
-        .choice-button {
-            background: #b00000;
-            color: white;
-            padding: 12px;
-            border-radius: 8px;
-            text-align: center;
-            font-weight: 700;
-            font-size: 1em;
-            cursor: pointer;
-            text-decoration: none;
-            user-select: none;
-            flex: 1;
-            min-width: 140px;
-            transition: background 0.3s;
-        }
-        .choice-button:hover {
-            background: #850000;
-        }
-
-        @media (max-width: 700px) {
-            .container {
-                width: 95vw;
-                padding: 24px 12px;
-                min-height: 75vh;
-            }
-            .step-content {
-                margin-left: 36px;
-                font-size: 1.25em;
-            }
-            .step-number {
-                width: 40px;
-                height: 40px;
-                line-height: 40px;
-                font-size: 1.5em;
-            }
-            .choice-buttons {
-                margin-left: 36px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guide CNFans</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1890ff">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f2f4f8;
+      color: #111;
+    }
+    .container {
+      width: 100vw;
+      padding: 24px 16px 60px;
+      background: #fff;
+      min-height: 100vh;
+    }
+    header img {
+      display: block;
+      margin: 0 auto 12px;
+      width: 120px;
+    }
+    .subtitle {
+      text-align: center;
+      font-size: 1.25em;
+      font-weight: 600;
+      margin-bottom: 24px;
+      color: #c62828;
+    }
+    .step {
+      display: none;
+      margin-bottom: 42px;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+    .step.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .step-title {
+      font-size: 1.5em;
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      color: #c62828;
+    }
+    .step-title img {
+      width: 32px;
+      height: 32px;
+      margin-right: 12px;
+    }
+    .step-content {
+      font-size: 1.2em;
+      line-height: 1.7;
+      color: #111;
+    }
+    a {
+      color: #c62828;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .choice-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+    .choice-button {
+      background: #c62828;
+      color: white;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1em;
+      text-align: center;
+      min-width: 120px;
+      transition: background 0.3s;
+      text-decoration: none;
+    }
+    .choice-button:hover {
+      background: #a91f1f;
+    }
+    .tips {
+      background: #fff4f4;
+      border-left: 4px solid #c62828;
+      padding: 16px;
+      border-radius: 10px;
+      margin-top: 28px;
+      font-size: 1.1em;
+    }
+    .next-btn {
+      width: 100%;
+      background: #c62828;
+      color: white;
+      border: none;
+      padding: 16px;
+      border-radius: 10px;
+      font-size: 1.2em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 28px;
+    }
+    .next-btn:hover {
+      background: #a91f1f;
+    }
+    .progress-bar {
+      width: 100%;
+      height: 10px;
+      background: #e0e0e0;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .progress {
+      height: 100%;
+      background: #c62828;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+  </style>
 </head>
 <body>
-    <div class="progress-bar"><div class="progress" id="progress"></div></div>
+  <div class="container">
+    <header>
+      <img src="https://s3-eu-west-1.amazonaws.com/tpd/logos/6417ff57d88ad4baa8407f63/0x0.png" alt="CNFans Logo">
+    </header>
+    <div class="progress-bar"><div class="progress" id="progressBar"></div></div>
 
-    <div class="container">
-        <div class="logo-header">
-            <img src="https://i.postimg.cc/R0s41NsS/0x0.png" alt="Logo CNFans" />
-        </div>
-
-        <div class="step active" data-step="1">
-            <span class="step-number">1</span>
-            <span class="step-title">Installer l'application CNFans</span>
-            <div class="step-content">
-                Cliquez sur ce lien pour télécharger et installer l'application :<br>
-                <a href="https://cnfans.com/register?ref=3238546" target="_blank" rel="noopener noreferrer">https://cnfans.com/register?ref=3238546</a>
-            </div>
-        </div>
-
-        <div class="step" data-step="2">
-            <span class="step-number">2</span>
-            <span class="step-title">Créer un compte</span>
-            <div class="step-content">
-                Suivez les instructions sur le site pour créer votre compte CNFans.
-            </div>
-        </div>
-
-        <div class="step" data-step="3">
-            <span class="step-number">3</span>
-            <span class="step-title">Chercher des articles</span>
-            <div class="step-content">
-                Choisissez une des options suivantes :
-                <div class="choice-buttons">
-                    <a href="https://t.me/+example_channel" target="_blank" rel="noopener noreferrer" class="choice-button">Canal Telegram</a>
-                    <a href="https://docs.google.com/spreadsheets/d/example" target="_blank" rel="noopener noreferrer" class="choice-button">Site web</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="step" data-step="4">
-            <span class="step-number">4</span>
-            <span class="step-title">Règlement de la commande</span>
-            <div class="step-content">
-                Le règlement se fait en deux étapes :<br><br>
-                <strong>1ère étape :</strong> vous payez les frais pour envoyer l'article du vendeur vers l'entrepôt CNFans.<br><br>
-                <strong>2ème étape :</strong> une fois que l'article arrive à l'entrepôt, vous payez les frais pour la livraison jusqu'à chez vous.
-            </div>
-        </div>
-
-        <div class="step" data-step="5">
-            <span class="step-number">✔</span>
-            <span class="step-title">Félicitations !</span>
-            <div class="step-content">
-                Vous avez terminé le guide.
-                <div class="tips">
-                    <strong>Conseils :</strong>
-                    <ul>
-                        <li>Sauvegardez vos identifiants CNFans.</li>
-                        <li>Consultez régulièrement les articles mis à jour.</li>
-                        <li>Si besoin, contactez-moi directement !</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <button class="next-btn" id="nextBtn">Étape suivante</button>
+    <div class="step active">
+      <div class="step-title">
+        <img src="https://cdn-icons-png.flaticon.com/512/9068/9068805.png" alt="Install">
+        Installer CNFans
+      </div>
+      <div class="step-content">
+        Télécharge l'app via ce lien affilié :<br>
+        <a href="https://cnfans.com/register?ref=3238546" target="_blank">https://cnfans.com/register?ref=3238546</a>
+      </div>
     </div>
 
-    <script>
-        const steps = document.querySelectorAll('.step');
-        const nextBtn = document.getElementById('nextBtn');
-        const progress = document.getElementById('progress');
-        let currentStep = 0;
+    <div class="step">
+      <div class="step-title">
+        <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="Compte">
+        Créer un compte
+      </div>
+      <div class="step-content">
+        Suis les instructions sur le site.<br>
+        <em>Utilise un email valide pour les notifications.</em>
+      </div>
+    </div>
 
-        function updateProgress(stepIndex) {
-            const totalSteps = steps.length;
-            const percent = ((stepIndex + 1) / totalSteps) * 100;
-            progress.style.width = percent + '%';
-        }
+    <div class="step">
+      <div class="step-title">
+        <img src="https://cdn-icons-png.flaticon.com/512/1170/1170576.png" alt="Chercher">
+        Chercher des articles
+      </div>
+      <div class="step-content">
+        Choisissez une des options suivantes :
+        <div class="choice-buttons">
+          <a href="https://t.me/+example_channel" target="_blank" class="choice-button">Telegram</a>
+          <a href="https://docs.google.com/spreadsheets/d/example" target="_blank" class="choice-button">Site Web</a>
+        </div>
+      </div>
+    </div>
 
-        function showStep(index) {
-            steps.forEach((step, i) => {
-                step.classList.toggle('active', i === index);
-            });
-            updateProgress(index);
-            if (index === steps.length - 1) {
-                nextBtn.style.display = 'none';
-            } else {
-                nextBtn.style.display = 'block';
-            }
-        }
+    <div class="step">
+      <div class="step-title">
+        <img src="https://cdn-icons-png.flaticon.com/512/1170/1170576.png" alt="Paiement">
+        Règlement de la commande
+      </div>
+      <div class="step-content">
+        Le règlement se fait en deux étapes :<br><br>
+        <strong>1ère étape :</strong> vous payez les frais pour envoyer l'article du vendeur vers l'entrepôt CNFans.<br><br>
+        <strong>2ème étape :</strong> une fois que l'article arrive à l'entrepôt, vous payez les frais pour la livraison jusqu'à chez vous.
+      </div>
+    </div>
 
-        nextBtn.addEventListener('click', () => {
-            currentStep++;
-            showStep(currentStep);
-        });
+    <div class="step">
+      <div class="step-title">
+        <img src="https://cdn-icons-png.flaticon.com/512/845/845646.png" alt="Fini">
+        Terminé !
+      </div>
+      <div class="step-content">
+        Bravo, tu as terminé le guide !
+        <div class="tips">
+          <strong>Conseils :</strong>
+          <ul>
+            <li>Sauvegarde ton identifiant CNFans.</li>
+            <li>Consulte les nouveautés chaque semaine.</li>
+            <li>Besoin d’aide ? Contacte-moi.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
+    <button class="next-btn" id="nextBtn">Étape suivante</button>
+  </div>
+
+  <script>
+    const steps = document.querySelectorAll('.step');
+    const nextBtn = document.getElementById('nextBtn');
+    const progress = document.getElementById('progressBar');
+    let currentStep = 0;
+
+    function showStep(index) {
+      steps.forEach((step, i) => {
+        step.classList.toggle('active', i === index);
+      });
+      progress.style.width = ((index) / (steps.length - 1)) * 100 + "%";
+      if (index === steps.length - 1) {
+        nextBtn.style.display = 'none';
+      }
+    }
+
+    nextBtn.addEventListener('click', () => {
+      if (currentStep < steps.length - 1) {
+        currentStep++;
         showStep(currentStep);
-    </script>
+      }
+    });
+
+    showStep(currentStep);
+  </script>
 </body>
 </html>
