@@ -177,6 +177,7 @@
 </head>
 <body>
   <div class="container">
+    <div class="progress-bar"><div class="progress" id="progressBar"></div></div>
     <header>
       <img src="https://s3-eu-west-1.amazonaws.com/tpd/logos/6417ff57d88ad4baa8407f63/0x0.png" alt="CNFans Logo" style="width:260px;max-width:90vw;">
     </header>
@@ -240,36 +241,36 @@
             </li>
           </ul>
         </div>
-      </div>
+    </div>v>
     </div>
-
     <button class="next-btn" id="nextBtn">Étape suivante</button>
+  </div>ton class="next-btn" id="nextBtn">Étape suivante</button>
   </div>
-
   <script>
     const steps = document.querySelectorAll('.step');
     const nextBtn = document.getElementById('nextBtn');
     const progress = document.getElementById('progressBar');
+    let currentStep = 0;ument.getElementById('progressBar');
     let currentStep = 0;
-
     function showStep(index) {
       steps.forEach((step, i) => {
         step.classList.toggle('active', i === index);
-      });
+      });tep.classList.toggle('active', i === index);
       progress.style.width = ((index) / (steps.length - 1)) * 100 + "%";
-      if (index === steps.length - 1) {
+      if (index === steps.length - 1) { (steps.length - 1)) * 100 + "%";
         nextBtn.style.display = 'none';
-      }
+      } nextBtn.style.display = 'none';
+    } }
     }
-
     nextBtn.addEventListener('click', () => {
-      if (currentStep < steps.length - 1) {
-        currentStep++;
+      if (currentStep < steps.length - 1) { {
+        currentStep++;< steps.length - 1) {
         showStep(currentStep);
-      }
+      } showStep(currentStep);
     });
-
+    });
     showStep(currentStep);
-  </script>
-</body>
+  </script>p(currentStep);
+</body>ipt>
+</html>
 </html>
